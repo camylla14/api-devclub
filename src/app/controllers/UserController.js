@@ -25,7 +25,6 @@ class UserController {
       return response.status(400).json({ error: err.errors });
     }
 
-    console.log('REQUEST', request.body);
     const { name, email, password, admin } = request.body;
 
     const existingUser = await User.findOne({
