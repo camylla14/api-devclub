@@ -1,20 +1,20 @@
 import Sequelize, { Model } from 'sequelize';
 
-class User extends Model {
+class Product extends Model {
   static init(sequelize) {
     Model.init(
       {
         name: Sequelize.STRING,
-        email: Sequelize.STRING,
-        password_hash: Sequelize.STRING,
-        admin: Sequelize.BOOLEAN,
+        price: Sequelize.INTEGER,
+        category: Sequelize.STRING,
+        path: Sequelize.STRING,
       },
       {
         sequelize,
-        tableName: 'users',
+        tableName: 'products',
       },
     );
   }
 }
 
-export default User;
+export default Product;
