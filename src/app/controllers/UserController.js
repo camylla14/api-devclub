@@ -25,8 +25,8 @@ class UserController {
       return response.status(400).json({ error: err.errors });
     }
 
-    const { name, email, password, admin } = request.body;
-
+    const [ name, email, password, admin ] = request.body;
+ 
     const existingUser = await User.findOne({
       where: {
         email,
