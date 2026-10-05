@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import Product from './../models/Product.js';
+import Category from './../models/category.js';
 
 class ProductController {
   async store(request, response) {
@@ -29,7 +30,13 @@ class ProductController {
   }
 
   async index(_request, response){
-    const products = await Product.findAll()
+    const products = await Product.findAll({
+      include: {
+        model: Category,
+        as: 'category',
+        attributes: ['id', 'name']
+      },
+    })
 
     return response.status(200).json(products)
   }
